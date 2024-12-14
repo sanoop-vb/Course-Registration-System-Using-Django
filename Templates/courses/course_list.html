@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Course List</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'courses/style.css' %}">
+</head>
+<body>
+    <h1>AVAILABLE  COURSES</h1>
+    <ul>
+        {% for course in courses %}
+        <li>
+            <h2>{{ course.title }}</h2>
+            <p>{{ course.description }}</p>
+            <p><strong>Maximum Available slots</strong>: {{ course.maximum_capacity }}</p>
+            <p><strong>Enrolled Students</strong>: {{ course.current_enrolled }}/{{ course.maximum_capacity }}</p>
+            <a class="reg" href="{% url 'course_register' course.id %}">Register</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

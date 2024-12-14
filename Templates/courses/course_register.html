@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Register for {{ course.title }}</title>
+    <link rel="stylesheet" href="{% static 'courses/style.css' %}">
+</head>
+<body>
+    <h1>Register for {{ course.title }}</h1>
+    <p></p><strong>Maximum number of slots</strong>: {{ course.maximum_capacity }}</P>
+    <p></p><strong>Currently enrolled slots</strong>: {{ course.current_enrolled }}</P>
+    <div class="register">
+    <form class="form-container" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="submit">Submit</button>
+    </form>
+    <a  href="{% url 'course_list' %}" >Back to Course List</a>
+        </div>
+</body>
+</html>
